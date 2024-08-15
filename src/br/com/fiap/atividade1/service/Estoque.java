@@ -64,7 +64,7 @@ public class Estoque {
             pularLinha();
         } else {
             for (int i = 0; i < count; i++) {
-                System.out.println(i + ": " + produtos[i]);
+                System.out.println(i + " - " + produtos[i]);
             }
         }
     }
@@ -75,4 +75,5 @@ public class Estoque {
             System.out.println();
         }
     }
+
 }
