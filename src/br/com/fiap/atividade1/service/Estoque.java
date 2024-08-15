@@ -8,7 +8,7 @@ public class Estoque {
 
     // Construtor
     public Estoque(int tamanho) {
-        produtos = new Produto[5];
+        produtos = new Produto[tamanho];
         count = 0;
     }
 
@@ -18,7 +18,8 @@ public class Estoque {
             produtos[count] = produto;
             count++;
         } else {
-            System.out.println("br.com.fiap.atividade1.service.Estoque cheio! Não é possível adicionar o produto.");
+            System.out.println("Estoque cheio! Não é possível adicionar o produto.");
+            pularLinha();
         }
     }
 
@@ -36,6 +37,7 @@ public class Estoque {
     public void atualizar(int indice, Produto produto) {
         if (indice >= 0 && indice < count) {
             produtos[indice] = produto;
+            System.out.println("Produto atualizado com sucesso!");
         } else {
             System.out.println("Índice inválido!");
         }
@@ -49,15 +51,28 @@ public class Estoque {
             }
             produtos[count - 1] = null; // Remove a referência do último produto
             count--;
+            System.out.println("Produto removido com Sucesso!");
+            pularLinha();
         } else {
             System.out.println("Índice inválido! Não é possível remover.");
         }
     }
 
-    // Listar produtos
     public void listar() {
-        for (int i = 0; i < count; i++) {
-            System.out.println(i + ": " + produtos[i]);
+        if (count == 0) {
+            System.out.println("Estoque Vazio");
+            pularLinha();
+        } else {
+            for (int i = 0; i < count; i++) {
+                System.out.println(i + ": " + produtos[i]);
+            }
+        }
+    }
+
+    private static void pularLinha() {
+        // Imprime 3 quebras de linha para "limpar" a tela
+        for (int i = 0; i < 3; i++) {
+            System.out.println();
         }
     }
 }

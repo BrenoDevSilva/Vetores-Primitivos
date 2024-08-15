@@ -30,7 +30,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "br.com.fiap.atividade1.model.Produto{" +
+        return "Produto{" +
                 "nome='" + nome + '\'' +
                 ", preco=" + preco +
                 '}';
