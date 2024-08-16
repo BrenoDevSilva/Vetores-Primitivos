@@ -14,13 +14,11 @@ public class Estoque {
 
     // Adicionar produto
     public void adicionar(Produto produto) {
-        if (count < produtos.length) {
-            produtos[count] = produto;
-            count++;
-        } else {
-            System.out.println("Estoque cheio! Não é possível adicionar o produto.");
-            pularLinha();
+        if (count >= produtos.length) {
+            redimensionar();
         }
+        produtos[count] = produto;
+        count++;
     }
 
     // Buscar produto
@@ -69,11 +67,20 @@ public class Estoque {
         }
     }
 
+    private void redimensionar() {
+        Produto[] novoArray = new Produto[produtos.length * 2];
+        for (int i = 0; i < count; i++) {
+            novoArray[i] = produtos[i];
+        }
+        produtos = novoArray;
+        pularLinha();
+        System.out.println("Estoque redimensionado para " + produtos.length + " itens.");
+    }
+
     private static void pularLinha() {
         // Imprime 3 quebras de linha para "limpar" a tela
         for (int i = 0; i < 3; i++) {
             System.out.println();
         }
     }
-
 }
